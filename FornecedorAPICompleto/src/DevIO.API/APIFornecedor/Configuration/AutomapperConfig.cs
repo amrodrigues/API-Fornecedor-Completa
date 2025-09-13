@@ -16,6 +16,8 @@ namespace APIFornecedor.Configuration
 
             CreateMap<Produto, ProdutoViewModel>()
                 .ForMember(dest => dest.NomeFornecedor, opt => opt.MapFrom(src => src.Fornecedor.Nome));
+
+            CreateMap<AdicionarFornecedorViewModel, Fornecedor>();
         }
     }
 }

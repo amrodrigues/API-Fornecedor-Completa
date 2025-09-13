@@ -22,7 +22,7 @@
             app.UseHttpsRedirection();
 
             app.UseCors("Development");
-            
+
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
@@ -32,5 +32,15 @@
 
             return app;
         }
+
+        public static void AddValidationConfig(this WebApplicationBuilder builder)
+        {
+            builder.Services.AddControllers().ConfigureApiBehaviorOptions(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
+
+        }
     }
+
 }
