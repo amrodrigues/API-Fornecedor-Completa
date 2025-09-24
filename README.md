@@ -80,6 +80,17 @@ Para criar um novo fornecedor, utilize o método **POST** enviando o seguinte co
   ```bash
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
   ```
+  Continuação da instalação :
+  
+  ```bash
+  npm install -g @angular/cli
+  ```
+  Para executar 
+```bash
+ng serve
+```
+Rodar a aplicação no Visual Studio e trocar a porta no caminho abaixo:
 
+APIFornecedor\wwwroot\app\demo-webapi\src\app\base\baseService.ts
 
   
