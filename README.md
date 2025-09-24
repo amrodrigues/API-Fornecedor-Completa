@@ -50,7 +50,17 @@ Para criar um novo fornecedor, utilize o método **POST** enviando o seguinte co
   "nome": "Nome do Fornecedor",
   "documento": "09678595737",
   "tipoFornecedor": 1,
-  "endereco": null,
+  "endereco": {
+    "id": "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+    "logradouro": "Rua do Comércio",
+    "numero": "123",
+    "complemento": "Bloco A",
+    "bairro": "Centro",
+    "cep": "12345678",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "fornecedorId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+  },
   "ativo": true,
   "produtos": []
 }
