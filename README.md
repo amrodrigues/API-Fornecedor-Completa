@@ -50,8 +50,47 @@ Para criar um novo fornecedor, utilize o método **POST** enviando o seguinte co
   "nome": "Nome do Fornecedor",
   "documento": "09678595737",
   "tipoFornecedor": 1,
-  "endereco": null,
+  "endereco": {
+    "id": "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+    "logradouro": "Rua do Comércio",
+    "numero": "123",
+    "complemento": "Bloco A",
+    "bairro": "Centro",
+    "cep": "12345678",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "fornecedorId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+  },
   "ativo": true,
   "produtos": []
 }
 ```
+
+## Instalação do Angular
+- instalar o VSCode  - https://code.visualstudio.com/
+- instalar o NodeJs - https://nodejs.org/en/download
+
+  Valide no terminal do VSCode as instalações:
+  ```bash
+  node -v
+  npm -v
+  ```
+  obs: Caso não encontre o node terá que criar a variável de ambiente do windows.
+  Já o npm utlizar o seguinte comando:
+  ```bash
+    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+  ```
+  Continuação da instalação :
+  
+  ```bash
+  npm install -g @angular/cli
+  ```
+  Para executar 
+```bash
+ng serve
+```
+Rodar a aplicação no Visual Studio e trocar a porta no caminho abaixo:
+
+APIFornecedor\wwwroot\app\demo-webapi\src\app\base\baseService.ts
+
+  
