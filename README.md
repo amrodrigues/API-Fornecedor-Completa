@@ -65,3 +65,21 @@ Para criar um novo fornecedor, utilize o método **POST** enviando o seguinte co
   "produtos": []
 }
 ```
+
+## Instalação do Angular
+- instalar o VSCode  - https://code.visualstudio.com/
+- instalar o NodeJs - https://nodejs.org/en/download
+
+  Valide no terminal do VSCode as instalações:
+  ```bash
+  node -v
+  npm -v
+  ```
+  obs: Caso não encontre o node terá que criar a variável de ambiente do windows.
+  Já o npm utlizar o seguinte comando:
+  ```bash
+    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+  ```
+
+
+  
