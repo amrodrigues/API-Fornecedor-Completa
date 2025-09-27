@@ -85,10 +85,13 @@ Para criar um novo fornecedor, utilize o método **POST** enviando o seguinte co
   ```bash
   npm install -g @angular/cli
   ```
-  Para executar 
-```bash
-ng serve
-```
+  ```bash
+  $env:NODE_OPTIONS = "--openssl-legacy-provider"
+  ```
+  Para compilar 
+  ```bash
+    ng serve
+   ```
 Rodar a aplicação no Visual Studio e trocar a porta no caminho abaixo:
 
 APIFornecedor\wwwroot\app\demo-webapi\src\app\base\baseService.ts
