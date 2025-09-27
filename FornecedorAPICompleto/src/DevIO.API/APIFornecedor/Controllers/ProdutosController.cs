@@ -112,7 +112,7 @@ namespace APIFornecedor.Controllers
                 return false;
             }
 
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/imagens", imgNome);
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/app/demo-webapi/src/imagens", imgNome);
 
             if (System.IO.File.Exists(filePath))
             {
