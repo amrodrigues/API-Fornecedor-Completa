@@ -13,6 +13,7 @@
                         .AllowAnyMethod()
                         .AllowAnyHeader());
             });
+            
 
             return services;
         }
@@ -22,6 +23,7 @@
             app.UseHttpsRedirection();
 
             app.UseCors("Development");
+
 
             app.UseRouting();
 

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace APIFornecedor.ViewModels
 {
@@ -33,5 +34,10 @@ namespace APIFornecedor.ViewModels
 
         [ScaffoldColumn(false)]
         public string NomeFornecedor { get; set; }
+
+        public static implicit operator ProdutoViewModel(ActionResult<ProdutoViewModel> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

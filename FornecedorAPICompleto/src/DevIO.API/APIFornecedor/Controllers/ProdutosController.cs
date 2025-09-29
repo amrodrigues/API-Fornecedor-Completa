@@ -1,6 +1,7 @@
 ﻿using APIFornecedor.ViewModels;
 using AutoMapper;
 using Business.Intefaces;
+using Business.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -69,7 +70,7 @@ namespace APIFornecedor.Controllers
 
             produtoViewModel.Imagem = imagemNome;
 
-            await _produtoService.Adicionar(_mapper.Map<Business.Models.Produto>(produtoViewModel));
+            await _produtoService.Adicionar(_mapper.Map<Produto>(produtoViewModel));
 
             return CustomResponse(produtoViewModel);
         }
@@ -86,10 +87,28 @@ namespace APIFornecedor.Controllers
 
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            var imagemNome = Guid.NewGuid() + "_" + produtoViewModel.Imagem;
 
-           
-           
+            ProdutoViewModel produtoAtualizacao = new();
+            produtoAtualizacao = await ObterProduto(id);
+            
+            produtoViewModel.Imagem = produtoAtualizacao.Imagem;
+            if (produtoViewModel.ImagemUpload != null)
+            {
+                var imagemNome = Guid.NewGuid() + "_" + produtoViewModel.Imagem;
+                if (!UploadArquivo(produtoViewModel.ImagemUpload, imagemNome))
+                {
+                    return CustomResponse(ModelState);
+                }
+                produtoAtualizacao.Imagem = imagemNome;
+            }
+           // var imagemNome = Guid.NewGuid() + "_" + produtoViewModel.Imagem;
+
+            produtoAtualizacao.Nome = produtoViewModel.Nome;
+            produtoAtualizacao.Descricao = produtoViewModel.Descricao;
+            produtoAtualizacao.Valor = produtoViewModel.Valor;
+            produtoAtualizacao.Ativo = produtoViewModel.Ativo;
+
+
             await _produtoService.Atualizar(_mapper.Map<Business.Models.Produto>(produtoViewModel));
 
             return CustomResponse(produtoViewModel);
