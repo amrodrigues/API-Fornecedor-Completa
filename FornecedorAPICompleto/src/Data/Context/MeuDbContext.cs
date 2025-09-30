@@ -10,9 +10,9 @@ namespace Data.Context
     public class MeuDbContext : DbContext
     {
         // Construtor sem parâmetros, necessário para as ferramentas de migração
-        public MeuDbContext()
-        {
-        }
+        //public MeuDbContext()
+        //{
+        //}
 
         // Construtor com opções, usado em tempo de execução pela sua API
         public MeuDbContext(DbContextOptions<MeuDbContext> options) : base(options) { }
@@ -42,15 +42,15 @@ namespace Data.Context
             base.OnModelCreating(modelBuilder);
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                // Este é o método que configura a string de conexão e o provedor
-                // quando a injeção de dependência não está em uso (como nas migrações).
-                optionsBuilder.UseSqlServer("Server=localhost;Database=FornecedorDb;Trusted_Connection=True;MultipleActiveResultSets=true");
-            }
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    if (!optionsBuilder.IsConfigured)
+        //    {
+        //        // Este é o método que configura a string de conexão e o provedor
+        //        // quando a injeção de dependência não está em uso (como nas migrações).
+        //        optionsBuilder.UseSqlServer("Server=localhost;Database=FornecedorDb;Trusted_Connection=True;MultipleActiveResultSets=true");
+        //    }
+        //}
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
