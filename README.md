@@ -96,4 +96,8 @@ Rodar a aplicação no Visual Studio e trocar a porta no caminho abaixo:
 
 APIFornecedor\wwwroot\app\demo-webapi\src\app\base\baseService.ts
 
-  
+## Visualização do Sistema
+
+<img width="1231" height="460" alt="Lista de produtos" src="https://github.com/user-attachments/assets/be819c60-381a-4b4a-8ba3-4c39a52bd20e" />
+
+
