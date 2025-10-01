@@ -1,5 +1,6 @@
 using APIFornecedor.Configuration;
 using APIFornecedor.Data;
+using APIFornecedor.Extensions;
 using Data.Context;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -24,6 +25,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddErrorDescriber<IdentityMensagensPortugues>()
     .AddDefaultTokenProviders();
 
 builder.Services.AddDbContext<MeuDbContext>(options =>
