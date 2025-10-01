@@ -7,10 +7,12 @@ using Business.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using System.Web.Http.ModelBinding;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace APIFornecedor.Controllers
 {
+    [Authorize]
     [Route("api/fornecedores")]
 
     public class FornecedoresController : MainController
@@ -29,6 +31,8 @@ namespace APIFornecedor.Controllers
             _fornecedorService = fornecedorService;
             
         }
+        [AllowAnonymous]
+        [HttpGet]
         public async Task<IEnumerable<FornecedorViewModel>> ObterTodos()
         {
 
