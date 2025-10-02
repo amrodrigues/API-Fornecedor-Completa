@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using APIFornecedor.Extensions;
 
 
 namespace APIFornecedor.Controllers
@@ -52,8 +53,8 @@ namespace APIFornecedor.Controllers
             return fornecedor;
         }
 
-        
 
+        [ClaimsAuthorize("Fornecedor","Adicionar")]
         [HttpPost]
         public async Task<ActionResult<FornecedorViewModel>> Adicionar(AdicionarFornecedorViewModel fornecedorViewModel)
         {
@@ -69,6 +70,7 @@ namespace APIFornecedor.Controllers
             return CustomResponse(fornecedorViewModel);
         }
 
+        [ClaimsAuthorize("Fornecedor", "Atualizar")]
         [HttpPut("{id:guid}")]
         public async Task<ActionResult<FornecedorViewModel>> Atualizar( Guid id, FornecedorViewModel fornecedorViewModel)
         {
@@ -96,7 +98,7 @@ namespace APIFornecedor.Controllers
         }
 
 
-
+        [ClaimsAuthorize("Fornecedor", "Excluir")]
         [HttpDelete("{id:guid}")]
 
         public async Task<ActionResult<FornecedorViewModel>> Excluir(Guid id)
