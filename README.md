@@ -100,4 +100,26 @@ APIFornecedor\wwwroot\app\demo-webapi\src\app\base\baseService.ts
 
 <img width="1231" height="460" alt="Lista de produtos" src="https://github.com/user-attachments/assets/be819c60-381a-4b4a-8ba3-4c39a52bd20e" />
 
+## Criação do Usuário
+
+Novos métodos criados /api/nova_conta ou /api/entrar
+
+```json
+{
+  "email": "usuario.novo@exemplo.com.br",
+  "password": "SenhaForte123!",
+  "confirmPassword": "SenhaForte123!"
+}
+```
+
+## 🔐 Autenticação e Autorização (JSON Web Token - JWT)
+
+Nossa API utiliza **Tokens JWT** no esquema **Bearer** para todas as requisições autenticadas e autorizadas. O token é composto por três partes (Header, Payload e Signature) e contém as permissões (*Claims*) que definem o acesso do usuário.
+
+### Estrutura do Payload (Claims Decodificadas) 🕵️‍♀️
+
+O `Payload` decodificado abaixo é um exemplo de um token válido gerado após um login bem-sucedido. Ele inclui *claims* de segurança padrão e *claims* de autorização específicas do domínio.
+
+<img width="1257" height="683" alt="Clains" src="https://github.com/user-attachments/assets/ebf7f999-c954-4a5a-932c-a0c76ef129db" />
+
 
