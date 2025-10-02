@@ -122,4 +122,34 @@ O `Payload` decodificado abaixo é um exemplo de um token válido gerado após u
 
 <img width="1257" height="683" alt="Clains" src="https://github.com/user-attachments/assets/ebf7f999-c954-4a5a-932c-a0c76ef129db" />
 
+ controle de acesso granular na API é implementado utilizando um **atributo customizado de autorização** que inspeciona as *claims* de domínio do token.
+
+O atributo `[ClaimsAuthorize("Tipo da Claim", "Valor da Claim")]` é o *gatekeeper*: ele garante que o usuário tenha a permissão necessária antes de executar o método do *controller*.
+
+**Exemplo de Proteção no `FornecedoresController`:**
+
+```csharp
+[Authorize]
+[Route("api/fornecedores")]
+public class FornecedoresController : MainController
+{
+    // Requer que o token contenha a claim 'Fornecedor' com o valor 'Excluir'
+    [ClaimsAuthorize("Fornecedor", "Excluir")] 
+    [HttpDelete("{id:guid}")]
+    public async Task<ActionResult<FornecedorViewModel>> Excluir(Guid id)
+    {
+        // Lógica de exclusão só é executada se a claim for válida
+        await _fornecedorService.Remover(id);
+        return CustomResponse();
+    }
+    
+    // Requer que o token contenha a claim 'Fornecedor' com o valor 'Atualizar'
+    [ClaimsAuthorize("Fornecedor", "Atualizar")]
+    [HttpPut("{id:guid}")]
+    public async Task<ActionResult<FornecedorViewModel>> Atualizar(Guid id, FornecedorViewModel fornecedorViewModel)
+    {
+        // ...
+        return CustomResponse(fornecedorViewModel);
+    }
+}
 
