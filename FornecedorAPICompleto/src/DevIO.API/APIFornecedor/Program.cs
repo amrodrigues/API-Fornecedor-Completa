@@ -83,10 +83,16 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// 1. CORS DEVE VIR PRIMEIRO
+app.UseCors("Total");
+
+// 2. AUTENTICAÇÃO
+app.UseAuthentication();
+
+// 3. AUTORIZAÇÃO
 app.UseAuthorization();
 
+// 4. Mapeamento dos Controllers (execução)
 app.MapControllers();
-
-app.UseCors("Total");
 
 app.Run();
