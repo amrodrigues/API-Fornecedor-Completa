@@ -1,6 +1,7 @@
 ﻿using APIFornecedor.Extensions;
 using APIFornecedor.ViewModels;
 using Business.Intefaces;
+ 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -22,8 +23,8 @@ namespace APIFornecedor.Controllers
         public AuthController(INotificador notificador,
             SignInManager<IdentityUser> singInManager,
             UserManager<IdentityUser> userManager,
-            IOptions<AppSettings> appSettings
-            ) : base(notificador)
+            IOptions<AppSettings> appSettings,
+            IUser user) : base(notificador,  user)
         {
             _singInManager = singInManager;
             _userManager = userManager;

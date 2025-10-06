@@ -25,7 +25,8 @@ namespace APIFornecedor.Controllers
         public FornecedoresController(IFornecedorRepository fornecedorRepository,
                                       IMapper mapper, 
                                       IFornecedorService fornecedorService,
-                                      INotificador notificador) :base(notificador)
+                                      INotificador notificador,
+                                      IUser user) : base(notificador, user)
         {
             _fornecedorRepository = fornecedorRepository;
             _mapper = mapper;

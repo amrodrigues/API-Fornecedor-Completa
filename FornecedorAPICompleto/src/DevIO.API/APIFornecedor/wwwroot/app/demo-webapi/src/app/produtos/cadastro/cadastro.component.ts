@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
+
 import { Observable } from 'rxjs';
 
 import { Produto } from '../models/Produto';
@@ -67,18 +67,8 @@ export class CadastroComponent implements OnInit {
     this.router.navigate(['/lista-produtos']);
   }
 
-  onError(fail: HttpErrorResponse) {
-    // Limpa a lista de erros antes de adicionar novos
-    this.errors = [];
-
-    // Verifica se a propriedade 'errors' existe na resposta
-    if (fail.error && fail.error.errors) {
-      // Se for uma lista de erros, atribui diretamente
-      this.errors = fail.error.errors;
-    } else {
-      // Se não for uma lista de erros, trata como uma única mensagem de erro
-      this.errors.push(fail.error);
-    }
+  onError(fail: any) {
+    this.errors = fail.error.errors;
   }
 
   produtoHandleAlternativo(produto: Produto): Observable<Produto> {

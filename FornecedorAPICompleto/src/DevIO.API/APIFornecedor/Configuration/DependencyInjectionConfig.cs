@@ -1,4 +1,5 @@
-﻿using Business.Intefaces;
+﻿using APIFornecedor.Extensions;
+using Business.Intefaces;
 using Business.Notificacoes;
 using Business.Services;
 using Data.Context;
@@ -18,6 +19,9 @@ namespace APIFornecedor.Configuration
             services.AddScoped<INotificador, Notificador>();
             services.AddScoped<IFornecedorService, FornecedorService>();
             services.AddScoped<IProdutoService, ProdutoService>();
+
+            services.AddSingleton<HttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<IUser, AspNetUser>();
 
             return services;
         }

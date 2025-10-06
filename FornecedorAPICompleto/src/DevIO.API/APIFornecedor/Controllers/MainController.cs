@@ -12,9 +12,21 @@ namespace APIFornecedor.Controllers
     {
         private readonly INotificador _notificador;
 
-        public MainController(INotificador notificador)
+        public readonly IUser AppUser;
+
+        public Guid UsuarioId { get; set; }
+        public bool UsuarioAutenticado { get; set; }
+
+        public MainController(INotificador notificador, IUser appUser)
         {
             _notificador = notificador;
+            AppUser = appUser;
+
+            if (AppUser.IsAuthenticated())
+            {
+                UsuarioId = appUser.GetUserId();
+                UsuarioAutenticado = true;
+            }
         }
 
         protected bool OperacaoValida()

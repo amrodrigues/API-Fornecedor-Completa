@@ -11,6 +11,8 @@
         public DateTime DataCadastro { get; set; }
         public bool Ativo { get; set; }
 
+        public Guid UsuarioID { get; set; }
+
         /* EF Relations */
         public Fornecedor Fornecedor { get; set; }
     }
