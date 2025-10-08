@@ -152,4 +152,42 @@ public class FornecedoresController : MainController
         return CustomResponse(fornecedorViewModel);
     }
 }
+```
+## 📄 Documentação e Testes (Swagger/OpenAPI)
+
+Nossa API utiliza o padrão **OpenAPI (Swagger)** para documentação e testes interativos dos *endpoints* em ambiente de desenvolvimento.
+
+### Acesso e Configuração
+
+A documentação está disponível ao rodar a aplicação em ambiente de desenvolvimento (local) no seguinte endereço:
+
+* **URL Base:** `https://localhost:[PORTA]/swagger`
+
+| Recurso | Descrição |
+| :--- | :--- |
+| **API Versioning** | A versão é controlada pelo atributo `[ApiVersion(x,y)]` nos *Controllers*. |
+| **Documentos Swagger** | É gerado um documento **SwaggerDoc** (ex: `v1`) para cada versão, mantendo a documentação organizada. |
+| **Testes (Autorização)** | O Swagger UI está configurado para **Bearer Token** (`JWT`). Use o botão **Authorize** e insira o token para testar *endpoints* protegidos. |
+
+### Exemplo de Configuração de Versões
+
+A classe `ConfigureSwaggerOptions` garante que o Swagger consiga ler as versões configuradas (`v1`, `v2`, etc.) e as exiba corretamente na interface:
+
+```csharp
+// Configuração no Program.cs
+builder.Services.AddApiVersioning(options =>
+{
+    // ...
+}).AddVersionedApiExplorer(options => 
+{
+    options.GroupNameFormat = "'v'VVV";
+    // ...
+});
+
+// Registro da classe de configuração para versionamento do Swagger
+builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
+```
+
+<img width="1343" height="731" alt="Swagger" src="https://github.com/user-attachments/assets/7c3e8487-760a-402e-a6dc-fa504e02300f" />
+
 
